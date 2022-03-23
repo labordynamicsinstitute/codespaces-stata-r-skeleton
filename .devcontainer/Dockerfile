@@ -43,7 +43,7 @@ RUN apt-get update \
     && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 
 # install the AEA scripts into /usr/local/sbin
-RUN git clone https://github.com/AEADataEditor/editor-scripts.git /usr/local/bin 
+#RUN git clone https://github.com/AEADataEditor/editor-scripts.git /usr/local/bin 
 
 
 # Now switch back to the regular user (rstudio) ================================ REGULAR USER
@@ -54,6 +54,12 @@ COPY setup.do /setup.do
 WORKDIR /home/statauser
 RUN /usr/local/stata/stata do /setup.do | tee setup.$(date +%F).log
 RUN echo "export PATH=/usr/local/stata:${PATH}" >> /home/rstudio/.bashrc
+
+# install to home
+RUN git clone https://github.com/AEADataEditor/editor-scripts.git /home/rstudio/bin 
+
+RUN echo "export PATH=/home/rstudio/bin:${PATH}" >> /home/rstudio/.bashrc
+
 
 
 # Configure git to store credentials

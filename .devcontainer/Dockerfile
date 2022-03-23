@@ -79,3 +79,8 @@ SHELL [ "/bin/bash", "-l", "-c" ]
 USER rstudio
 WORKDIR /code
 
+# Setup for Rstudio operation
+#USER root
+#EXPOSE 8787
+#CMD ["/init"]
+

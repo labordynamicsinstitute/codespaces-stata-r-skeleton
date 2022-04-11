@@ -23,6 +23,11 @@ USER root
 COPY stata.lic /usr/local/stata/stata.lic
 RUN chmod a+r /usr/local/stata/stata.lic
 
+# install the gh binaries
+RUN \ 
+   curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg |  dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+   && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" > /etc/apt/sources.list.d/github-cli.list 
+
 # Install packages needed for aea-scripts
 #    and
 # Stuff we need from the Stata Docker Image
@@ -39,6 +44,7 @@ RUN apt-get update \
          curl \
          pandoc \
          wkhtmltopdf \
+         gh \
     && rm -rf /var/lib/apt/lists/* \
     && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 

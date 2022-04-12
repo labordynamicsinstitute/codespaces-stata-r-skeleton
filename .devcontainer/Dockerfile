@@ -12,7 +12,7 @@ FROM ${SRCHUBID}/stata${SRCVERSION}:${SRCTAG} as stata
 
 FROM rocker/${RTYPE}:${RVERSION}
 COPY --from=stata /usr/local/stata/ /usr/local/stata/
-RUN echo "export PATH=/usr/local/stata:${PATH}" >> /root/.bashrc
+#RUN echo "export PATH=/usr/local/stata:${PATH}" >> /root/.bashrc
 ENV PATH "$PATH:/usr/local/stata" 
 
 
@@ -59,12 +59,12 @@ USER rstudio
 COPY setup.do /setup.do
 WORKDIR /home/statauser
 RUN /usr/local/stata/stata do /setup.do | tee setup.$(date +%F).log
-RUN echo "export PATH=/usr/local/stata:${PATH}" >> /home/rstudio/.bashrc
+RUN echo "export PATH=/usr/local/stata:\${PATH}" >> /home/rstudio/.bashrc
 
 # install to home
 RUN git clone https://github.com/AEADataEditor/editor-scripts.git /home/rstudio/bin 
 
-RUN echo "export PATH=/home/rstudio/bin:${PATH}" >> /home/rstudio/.bashrc
+RUN echo "export PATH=/home/rstudio/bin:\${PATH}" >> /home/rstudio/.bashrc
 
 
 

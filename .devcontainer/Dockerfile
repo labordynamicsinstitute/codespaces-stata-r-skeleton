@@ -51,6 +51,8 @@ RUN apt-get update \
 # install the AEA scripts into /usr/local/sbin
 #RUN git clone https://github.com/AEADataEditor/editor-scripts.git /usr/local/bin 
 
+# install rclone
+RUN curl https://rclone.org/install.sh | bash
 
 # Now switch back to the regular user (rstudio) ================================ REGULAR USER
 USER rstudio

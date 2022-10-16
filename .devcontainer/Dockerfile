@@ -85,7 +85,7 @@ RUN git config --global credential.helper store
 # Setup for standard operation
 SHELL [ "/bin/bash", "-l", "-c" ]
 USER rstudio
-WORKDIR /code
+#WORKDIR /code
 
 # Setup for Rstudio operation
 #USER root

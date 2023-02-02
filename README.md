@@ -17,6 +17,22 @@ A typical usage of this codespace (but currently not standard practice at the Of
   - assess the output
   - finalize report
   
+All at once:
+
+```
+# AEAREP-NNNN number
+NNNN=1234
+# ICPSR project number
+MMMMM=12345
+```
+then
+```
+aeagit $NNNN
+python3 tools/download_openicpsr_private.py $MMMMM
+cd $MMMMM
+stata-mp -b do main.do
+```
+
 Unfortunately, it is rarely that easy...
 
 ## Provided software

@@ -6,7 +6,7 @@ This is set up for standard Codespaces **command line** operation, and optimized
 
 A typical usage of this codespace (but currently not standard practice at the Office of the AEA Data Editor) looks like this:
 
-- Initialize a manuscript specific Bitbucket repository ([instructions](https://labordynamicsinstitute.github.io/replicability-training-curriculum/aea-jira-workflow-a-guide.html#details)) using the [replication-template](https://github.com/AEADataEditor/replication-template).
+- Initialize a manuscript specific Bitbucket repository ([instructions](https://labordynamicsinstitute.github.io/ldilab-manual/11-01-workflow-in-progress.html)) using the [replication-template](https://github.com/AEADataEditor/replication-template).
 - [Initiate a codespace from this repository](https://github.com/codespaces/new?hide_repo_select=true&amp;ref=main&amp;repo=473197646)
 - From command-line,
   - clone the Bitbucket repository: `aeagit NNNN`

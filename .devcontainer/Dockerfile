@@ -74,7 +74,7 @@ RUN echo "export PATH=/usr/local/stata:\${PATH}" >> /home/rstudio/.bashrc
 # install to home
 RUN git clone https://github.com/AEADataEditor/editor-scripts.git /home/rstudio/bin 
 
-RUN echo "export PATH=/home/rstudio/bin:\${PATH}" >> /home/rstudio/.bashrc
+RUN echo "export PATH=/home/rstudio/bin:/home/rstudio/.local/bin:\${PATH}" >> /home/rstudio/.bashrc
 
 
 

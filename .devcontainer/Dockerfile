@@ -57,7 +57,8 @@ RUN apt-get update \
 
 # Install LaTeX packages that are needed
 
-RUN tlmgr install geometry hyperref xcolor subfig epstopdf pdftexcmds infwarerr kvoptions caption epstopdf-pkg
+RUN tlmgr install geometry hyperref xcolor subfig epstopdf pdftexcmds infwarerr kvoptions caption epstopdf-pkg \
+                  booktabs siunits siunitx
 
 # install rclone
 RUN curl https://rclone.org/install.sh | bash

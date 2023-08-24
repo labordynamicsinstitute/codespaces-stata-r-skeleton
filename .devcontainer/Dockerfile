@@ -40,6 +40,7 @@ RUN apt-get update \
          locales \
          libncurses5 \
          libfontconfig1 \
+         libicu-dev \
          git \
          nano \
          unzip \
@@ -50,8 +51,11 @@ RUN apt-get update \
          rsync \
          python3-pip \
          python3.8-venv \
+         sudo \
     && rm -rf /var/lib/apt/lists/* \
-    && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+    && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 \
+    && adduser rstudio sudo \ 
+    && echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 # install the AEA scripts into /usr/local/sbin
 #RUN git clone https://github.com/AEADataEditor/editor-scripts.git /usr/local/bin 

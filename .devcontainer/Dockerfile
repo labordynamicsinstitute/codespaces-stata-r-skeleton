@@ -21,10 +21,6 @@ ENV PATH "$PATH:/usr/local/stata"
 # The next parts need to be run as root ========================================== ROOT
 USER root
 
-# copy the license in so we can do the install of packages
-COPY stata.lic /usr/local/stata/stata.lic
-RUN chmod a+r /usr/local/stata/stata.lic
-
 # install the gh binaries
 RUN \ 
    curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg |  dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \

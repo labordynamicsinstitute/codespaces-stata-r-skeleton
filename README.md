@@ -2,7 +2,45 @@
 
 This is set up for standard Codespaces **command line** operation, and optimized for AEA data editorial activities.
 
-## Typical usage
+> WARNING: Building the image required for this to work takes about 30 minutes! We strongly advise that you use [Prebuilds](https://docs.github.com/en/codespaces/prebuilding-your-codespaces) if you wish to use this repeatedly. 
+
+## Provided software
+
+- Github CLI
+- R (see Dockerfile for version)
+- Rstudio (not started by default)
+- Stata (see Dockerfile for version)
+
+## Starting this Codespace environment
+
+To start this in Codespaces, go to your personal [Codespaces](https://github.com/codespaces) space, and search for this repository to [start a codespace](https://docs.github.com/en/codespaces/developing-in-codespaces/opening-an-existing-codespace), or, alternatively, fork this repository into your Github organization and launch Codespaces from the green button menu.
+
+It will use any environment variables that you have assigned to this repository. See [Github documentation on encrypted secrets](https://docs.github.com/en/codespaces/managing-your-codespaces/managing-encrypted-secrets-for-your-codespaces) to learn how to add specific secrets. You can add them to [your personal settings](https://github.com/settings/codespaces) or to the organization hosting the Codespace (e.g., [AEA secrets](https://github.com/organizations/AEADataEditor/settings/secrets/codespaces) or [LDI secrets](https://github.com/organizations/labordynamicsinstitute/settings/secrets/codespaces)).
+
+### Useful environment variables (secrets)
+
+These can be in personal space or organizational space.
+
+- `P_FREDKEY` API key to use the [FRED API](https://fred.stlouisfed.org/docs/api/fred/) within Stata. See [this example](https://github.com/labordynamicsinstitute/alfred_example).
+- `STATA_LIC_BASE64` - base64 encoded version of the Stata license file. **REQUIRED** if using Stata. See [this discussion](https://github.com/AEADataEditor/stata-project-with-docker).
+
+**Generating your `STATA_LIC_BASE64` secret**
+
+It can be generated with from a command line easily, for instance, from a running instance of this Codespace:
+
+- start this Codespace
+- Upload your Stata license file (`stata.lic`). You can use the Stata license installed on your own PC or Mac.
+- open up a terminal (`Ctrl-\'`)
+- Assuming that you put the Stata license file into the root of the Codespace, use this command:
+```
+cat stata.lic | base64
+```
+- Go to your [Github Codespace Secrets](https://github.com/settings/codespaces), and create a new secret with the value printed to your screen in the previous step.
+
+Or you can generate this on a bash terminal on your own computer with [Github CLI](https://github.com/cli/cli): `gh secret set STATA_LIC_BASE64 -b"$(cat stata.lic | base64)" -v all -o YOURORG` (may also work from Codespaces).
+
+
+## Typical usage at LDI Replication Lab
 
 A typical usage of this codespace (but currently not standard practice at the Office of the AEA Data Editor) looks like this:
 
@@ -34,26 +72,6 @@ stata-mp -b do main.do
 ```
 
 Unfortunately, it is rarely that easy...
-
-## Provided software
-
-- Github CLI
-- R (see Dockerfile for version)
-- Rstudio (not started by default)
-- Stata (see Dockerfile for version)
-
-## Starting this Codespace environment
-
-To start this in Codespaces, go to your personal [Codespaces](https://github.com/codespaces) space, and search for this repository to [start a codespace](https://docs.github.com/en/codespaces/developing-in-codespaces/opening-an-existing-codespace), or, alternatively, fork this repository into your Github organization and launch Codespaces from the green button menu.
-
-It will use any environment variables that you have assigned to this repository. See [Github documentation on encrypted secrets](https://docs.github.com/en/codespaces/managing-your-codespaces/managing-encrypted-secrets-for-your-codespaces) to learn how to add specific secrets. You can add them to [your personal settings](https://github.com/settings/codespaces) or to the organization hosting the Codespace (e.g., [AEA secrets](https://github.com/organizations/AEADataEditor/settings/secrets/codespaces) or [LDI secrets](https://github.com/organizations/labordynamicsinstitute/settings/secrets/codespaces)).
-
-### Useful environment variables (secrets)
-
-These can be in personal space or organizational space.
-
-- `P_FREDKEY` API key to use the [FRED API](https://fred.stlouisfed.org/docs/api/fred/) within Stata. See [this example](https://github.com/labordynamicsinstitute/alfred_example).
-- `STATA_LIC_BASE64` - base64 encoded version of the Stata license file, see [this discussion](https://github.com/AEADataEditor/stata-project-with-docker). It can be generated with this single command line: `gh secret set STATA_LIC_BASE64 -b"$(cat stata.lic | base64)" -v all -o YOURORG` from within Codespaces after a one-time upload of the `stata.lic` file. You can use the Stata license installed on your own PC or Mac.
 
 ### AEA-specific variables
 

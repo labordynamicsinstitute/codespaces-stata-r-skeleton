@@ -46,7 +46,6 @@ RUN apt-get update \
          gh \
          rsync \
          python3-pip \
-         python3.8-venv \
          imagemagick \
          sudo \
     && rm -rf /var/lib/apt/lists/* \

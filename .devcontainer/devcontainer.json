@@ -5,17 +5,21 @@
     "context": "..",
     /*"initializeCommand": ".devcontainer/init.sh",*/
     "postCreateCommand": ".devcontainer/post.sh",
-    "settings": {
-        "workbench.colorTheme": "Visual Studio Light",
-        "terminal.integrated.shell.linux": "/bin/bash"
-    },    
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "kylebarron.stata-enhanced",
+          "yeaoh.statarun"
+        ],
+        "settings": {
+          "workbench.colorTheme": "Visual Studio Light",
+          "terminal.integrated.shell.linux": "/bin/bash"}, 
+        }
+      }   ,
     "remoteEnv": {
         "DOCKER_BUILDKIT": "1",
 	},
-	"extensions": [
-		"kylebarron.stata-enhanced",
-		"yeaoh.statarun"
-	],
+	
     "secrets": {
         "STATA_LIC_BASE64": {
           "description": "Base64 encoded Stata license file, needed to run Stata within this container.",

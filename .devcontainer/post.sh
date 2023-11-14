@@ -11,5 +11,11 @@
         [ -f /usr/local/stata/stata.lic ] && sudo chmod -w /usr/local/stata/stata.lic 
     fi
 fi
+
+if [ -f install.R ]
+then
+    echo "installing R packages..."
+    Rscript install.R
+fi
 #docker buildx install
 echo "post done."

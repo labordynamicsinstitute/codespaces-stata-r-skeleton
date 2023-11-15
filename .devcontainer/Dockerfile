@@ -58,6 +58,11 @@ RUN apt-get update \
 # install the AEA scripts into /usr/local/sbin
 #RUN git clone https://github.com/AEADataEditor/editor-scripts.git /usr/local/bin 
 
+# Install R packages that might be needed
+
+COPY libraries.R .
+RUN R CMD BATCH libraries.R
+
 # Install LaTeX packages that are needed
 
 RUN tlmgr install geometry hyperref xcolor subfig epstopdf pdftexcmds infwarerr kvoptions caption epstopdf-pkg \

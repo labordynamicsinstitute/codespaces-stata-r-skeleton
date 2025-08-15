@@ -67,8 +67,11 @@ RUN R CMD BATCH libraries.R
 
 # Install LaTeX packages that are needed
 
-RUN tlmgr install geometry hyperref xcolor subfig epstopdf pdftexcmds infwarerr kvoptions caption epstopdf-pkg \
-                  booktabs siunits siunitx
+RUN tlmgr update --self \
+    && tlmgr install geometry hyperref xcolor subfig epstopdf pdftexcmds \
+    infwarerr kvoptions caption epstopdf-pkg                   \
+    booktabs siunits siunitx#
+
 
 # install rclone
 RUN curl https://rclone.org/install.sh | bash

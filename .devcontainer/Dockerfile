@@ -70,7 +70,7 @@ RUN R CMD BATCH libraries.R
 RUN tlmgr update --self \
     && tlmgr install geometry hyperref xcolor subfig epstopdf pdftexcmds \
     infwarerr kvoptions caption epstopdf-pkg                   \
-    booktabs siunits siunitx#
+    booktabs siunits siunitx
 
 
 # install rclone

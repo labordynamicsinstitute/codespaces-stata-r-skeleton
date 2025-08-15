@@ -51,10 +51,12 @@ RUN apt-get update \
          sudo \
          cloc \
     && rm -rf /var/lib/apt/lists/* \
-    && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 \
-    && adduser rstudio sudo \ 
-    && sed -i 's+domain="coder" rights="none"+domain="coder" rights="read | write"+' /etc/ImageMagick-6/policy.xml \
-    && echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+    && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 
+# Add the rstudio user to sudo 
+# RUN adduser rstudio sudo  
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+# Allow ImageMagick to convert PDF and PS
+RUN sed -i 's+domain="coder" rights="none"+domain="coder" rights="read | write"+' /etc/ImageMagick-6/policy.xml \
 
 # install the AEA scripts into /usr/local/sbin
 #RUN git clone https://github.com/AEADataEditor/editor-scripts.git /usr/local/bin 

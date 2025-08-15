@@ -1,10 +1,10 @@
 # syntax=docker/dockerfile:1.2
-ARG SRCVERSION=18
-# update based on https://hub.docker.com/r/dataeditors/stata17/tags
-ARG SRCTAG=2024-02-14
+ARG SRCVERSION=18-mp-i
+# update based on https://hub.docker.com/r/dataeditors/stata18/tags
+ARG SRCTAG=2025-02-26
 ARG SRCHUBID=dataeditors
 # update based on https://hub.docker.com/r/rocker/verse/tags
-ARG RVERSION=4.2.3
+ARG RVERSION=4.5.1
 ARG RTYPE=verse
 
 # define the source for Stata

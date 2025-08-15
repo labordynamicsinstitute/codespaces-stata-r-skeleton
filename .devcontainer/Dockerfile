@@ -76,16 +76,19 @@ RUN tlmgr update --self \
 # install rclone
 RUN curl https://rclone.org/install.sh | bash
 
-# get latest python requirements
-RUN curl https://raw.githubusercontent.com/AEADataEditor/replication-template-development/development/requirements.txt > /requirements.txt \
-   && pip install -r /requirements.txt 
 
 # Now switch back to the regular user (rstudio) ================================ REGULAR USER
 USER rstudio
+WORKDIR /home/rstudio
+
+# get latest python requirements
+RUN curl https://raw.githubusercontent.com/AEADataEditor/replication-template-development/development/requirements.txt > requirements.txt 
+RUN python -m venv /home/rstudio/.venv \
+   && /home/rstudio/.venv/bin/pip install --no-cache-dir -r requirements.txt
+RUN echo `export PATH="/home/rstudio/.venv/bin:\$PATH" >> /home/rstudio/.bashrc
 
 # install any packages into the home directory as the user,
 COPY setup.do /setup.do
-WORKDIR /home/statauser
 RUN /usr/local/stata/stata do /setup.do | tee setup.$(date +%F).log
 RUN echo "export PATH=/usr/local/stata:\${PATH}" >> /home/rstudio/.bashrc
 

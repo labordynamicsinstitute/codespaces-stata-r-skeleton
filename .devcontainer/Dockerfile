@@ -33,13 +33,12 @@ RUN \
 # We need to redo this here, since we are using the base image from `rocker`. 
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-         locales \
-         libncurses5 \
-         libfontconfig1 \
-         libicu-dev \
+         libncurses6 \
+         libcurl4 \
          git \
          nano \
          unzip \
+         locales \
          curl \
          pandoc \
          wkhtmltopdf \

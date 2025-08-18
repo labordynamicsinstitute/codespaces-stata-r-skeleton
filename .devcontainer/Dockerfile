@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.2
-ARG SRCVERSION=19-mp-i
+ARG SRCVERSION=19_5-mp-i
 # update based on https://hub.docker.com/r/dataeditors/stata18/tags
 ARG SRCTAG=2025-08-14
 ARG SRCHUBID=dataeditors

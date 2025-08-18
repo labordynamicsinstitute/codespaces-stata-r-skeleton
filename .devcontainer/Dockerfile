@@ -87,7 +87,7 @@ WORKDIR /home/rstudio
 RUN curl https://raw.githubusercontent.com/AEADataEditor/replication-template-development/development/requirements.txt > requirements.txt 
 RUN python -m venv /home/rstudio/.venv \
    && /home/rstudio/.venv/bin/pip install --no-cache-dir -r requirements.txt
-RUN echo `export PATH="/home/rstudio/.venv/bin:\$PATH" >> /home/rstudio/.bashrc
+RUN echo "export PATH=/home/rstudio/.venv/bin:\${PATH}" >> /home/rstudio/.bashrc
 
 # install any packages into the home directory as the user,
 COPY setup.do /setup.do

@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.2
-ARG SRCVERSION=18-mp-i
+ARG SRCVERSION=19-mp-i
 # update based on https://hub.docker.com/r/dataeditors/stata18/tags
-ARG SRCTAG=2025-02-26
+ARG SRCTAG=2025-08-14
 ARG SRCHUBID=dataeditors
 # update based on https://hub.docker.com/r/rocker/verse/tags
 ARG RVERSION=4.5.1
@@ -35,7 +35,7 @@ RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y \
          libncurses6 \
          libcurl4 \
-         libtinfo5 \
+         libtinfo6 \
          git \
          nano \
          unzip \

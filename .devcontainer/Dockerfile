@@ -55,7 +55,7 @@ RUN apt-get update \
     && update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 
 # Add the rstudio user to sudo 
-# RUN adduser rstudio sudo  
+RUN adduser rstudio sudo  
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 # Allow ImageMagick to convert PDF and PS
 RUN sed -i 's+domain="coder" rights="none"+domain="coder" rights="read | write"+' /etc/ImageMagick-6/policy.xml 

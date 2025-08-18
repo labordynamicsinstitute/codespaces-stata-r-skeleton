@@ -50,7 +50,9 @@ RUN apt-get update \
          sudo \
          cloc \
     && rm -rf /var/lib/apt/lists/* \
-    && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 
+    && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 \
+    && update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+
 # Add the rstudio user to sudo 
 # RUN adduser rstudio sudo  
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers

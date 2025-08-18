@@ -35,6 +35,7 @@ RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y \
          libncurses6 \
          libcurl4 \
+         libtinfo5 \
          git \
          nano \
          unzip \
